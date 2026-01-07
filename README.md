@@ -1,3 +1,4 @@
+
 # ⛽ Gasless Stablecoin Wallet (ERC-4337)
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
@@ -23,39 +24,43 @@ This project leverages **ERC-4337 (Account Abstraction)** to create a "Smart Acc
 - **Smart Accounts:** LightAccount (ERC-4337 compliant)
 - **Infrastructure:** Alchemy Bundler & Gas Manager
 
+
 ## 📦 Installation & Setup
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/brainwash2/alchemy-gasless-wallet.git
-cd alchemy-gasless-wallet
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/brainwash2/alchemy-gasless-wallet.git
+    cd alchemy-gasless-wallet
+    ```
 
-### 2. Install Dependencies
-Note: Using legacy-peer-deps due to React 19/Web3 library compatibility.
-```bash
-npm install --legacy-peer-deps
+2.  **Install Dependencies**
+    *Note: Using legacy-peer-deps due to React 19/Web3 library compatibility.*
+    ```bash
+    npm install --legacy-peer-deps
+    ```
 
-### 3. Environment Configuration
-Create a .env.local file in the root directory:
+3.  **Environment Configuration**
+    Create a `.env.local` file in the root directory:
+    ```bash
+    # 1. Alchemy API Key (Dashboard -> Apps)
+    NEXT_PUBLIC_ALCHEMY_API_KEY=your_api_key_here
 
-```bash
- # 1. Alchemy API Key (Dashboard -> Apps)
-NEXT_PUBLIC_ALCHEMY_API_KEY=your_api_key_here
+    # 2. Gas Manager Policy ID (Dashboard -> Gas Manager -> Sponsorship Policy)
+    NEXT_PUBLIC_ALCHEMY_GAS_MANAGER_POLICY_ID=your_policy_id_here
 
-# 2. Gas Manager Policy ID (Dashboard -> Gas Manager -> Sponsorship Policy)
-NEXT_PUBLIC_ALCHEMY_GAS_MANAGER_POLICY_ID=your_policy_id_here
+    # 3. Development Private Key (The "Signer" of the wallet)
+    # DO NOT USE A MAINNET KEY
+    NEXT_PUBLIC_TEST_PRIVATE_KEY=0x...
+    ```
 
-# 3. Development Private Key (The "Signer" of the wallet)
-# DO NOT USE A MAINNET KEY
-NEXT_PUBLIC_TEST_PRIVATE_KEY=0x...
+4.  **Run Locally**
+    ```bash
+    npm run dev
+    ```
 
-### 4. Run Locally 
-```bash
-npm run dev
-
-🧪 Usage Guide
-Initialization: The app generates a deterministic Smart Account address upon load.
-Funding: Send USDC (Arbitrum Sepolia) to the Smart Account Address.
-You do NOT need to send ETH.
-Transfer: Enter a recipient address and click "Pay with USDC".
-Verification: The transaction is executed via the EntryPoint contract, with gas paid by the Paymaster.
+## 🧪 Usage Guide
+1.  **Initialization:** The app generates a deterministic Smart Account address upon load.
+2.  **Funding:** Send **USDC** (Arbitrum Sepolia) to the Smart Account Address.
+    *   *You do NOT need to send ETH.*
+3.  **Transfer:** Enter a recipient address and click "Pay with USDC".
+4.  **Verification:** The transaction is executed via the EntryPoint contract, with gas paid by the Paymaster.
